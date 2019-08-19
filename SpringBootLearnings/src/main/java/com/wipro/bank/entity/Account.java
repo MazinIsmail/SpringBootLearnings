@@ -9,7 +9,7 @@ public class Account {
 
 	@Id
 	private int accountID;
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
 	private Customer customer;
 	private double balance;
 
