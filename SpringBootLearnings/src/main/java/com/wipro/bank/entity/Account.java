@@ -1,17 +1,23 @@
 package com.wipro.bank.entity;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Account {
 
 	@Id
 	private int accountID;
-	@ManyToOne(fetch=FetchType.LAZY)
-	private Customer customer;
+
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(unique=true)
+   	private Customer customer;
 	private double balance;
 
 	public Account() {

@@ -27,12 +27,6 @@ public class AccountService {
 	public List<Account> getAllAccounts() {
 		List<Account> accountList = accountRepository.findAll();
 		return accountList;
-
-	}
-
-	public List<Customer> getAllCustomers() {
-		return null;
-
 	}
 
 	public String transferFunds(int from, int to, double amount) {

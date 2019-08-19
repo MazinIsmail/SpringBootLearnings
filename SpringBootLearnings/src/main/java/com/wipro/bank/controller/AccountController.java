@@ -10,12 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wipro.bank.entity.Account;
 import com.wipro.bank.entity.Customer;
 import com.wipro.bank.service.AccountService;
+import com.wipro.bank.service.CustomerService;
 
 @RestController
 public class AccountController {
 
 	@Autowired
 	private AccountService accountService;
+	
+	@Autowired
+	private CustomerService customerService;
 
 	@GetMapping("/fetchAllAccounts")
 	public List<Account> fetchAllAccounts() {
@@ -23,6 +27,12 @@ public class AccountController {
 
 	}
 
+	@GetMapping("/fetchAllCustomers")
+	public List<Customer> fetchAllCustomers() {
+		return customerService.getAllCustomers();
+
+	}
+	
 	@GetMapping("/intializeAccounts")
 	public List<Account> intializeAccounts() {
 		List<Account> accounts = new ArrayList<Account>();
@@ -37,10 +47,12 @@ public class AccountController {
 		accountService.addAllAccount(accounts);
 
 		AccountService process = new AccountService();
+		CustomerService cutomerProcess=new CustomerService();
+		
 		System.out.println("************** Get All Accounts *****************");
 		System.out.println(process.getAllAccounts());
 		System.out.println("\n************** Get All Customers *****************");
-		System.out.println(process.getAllCustomers());
+		System.out.println(cutomerProcess.getAllCustomers());
 		Account userTest1 = process.getBalanceOf(acc1.getAccountID());
 		System.out.println(
 				"\n@ Account details of account number:" + acc1.getAccountID() + " is :" + "\n## " + userTest1);
@@ -52,7 +64,7 @@ public class AccountController {
 		System.out.println(
 				"@ Account details of account number:3 .." + "## " + userTest2 + " sorry user doesn't exist\n");
 		System.out.println("############ All Customer Details ############");
-		System.out.println(process.getAllCustomers());
+		System.out.println(cutomerProcess.getAllCustomers());
 		System.out.println("\n ############ Transfer of Funds from account number 4 to 5 ############");
 		String transferStatus = process.transferFunds(4, 5, 100);
 		System.out.println("@ Fund Transfer from account 4 to account 5 is: " + transferStatus);
