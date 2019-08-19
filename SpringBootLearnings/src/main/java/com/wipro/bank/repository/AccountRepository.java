@@ -11,4 +11,6 @@ import com.wipro.bank.entity.Account;
 @Transactional
 public interface AccountRepository extends JpaRepository<Account, Integer> {
 
+	public Account findByAccountId(int to);
+
 }

@@ -13,7 +13,7 @@ import javax.persistence.OneToOne;
 public class Account {
 
 	@Id
-	private int accountID;
+	private int accountId;
 
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(unique=true)
@@ -25,17 +25,17 @@ public class Account {
 	}
 
 	public Account(int accountID, Customer customer, double balance) {
-		this.accountID = accountID;
+		this.accountId = accountID;
 		this.balance = balance;
 		this.customer = new Customer(customer.getCustomerID(), customer.getName());
 	}
 
-	public int getAccountID() {
-		return accountID;
+	public int getAccountId() {
+		return accountId;
 	}
 
 	public void setAccountID(int accountID) {
-		this.accountID = accountID;
+		this.accountId = accountID;
 	}
 
 	public Customer getCustomer() {
@@ -56,7 +56,7 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Account [accountID=" + accountID + ", customer=" + customer.toString() + ", balance=" + balance + "]";
+		return "Account [accountID=" + accountId + ", customer=" + customer.toString() + ", balance=" + balance + "]";
 	}
 
 }
