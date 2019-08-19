@@ -44,31 +44,8 @@ public class AccountController {
 		accounts.add(acc2);
 		accounts.add(acc4);
 		accounts.add(acc5);
-		accountService.addAllAccount(accounts);
-
-		AccountService process = new AccountService();
-		CustomerService cutomerProcess=new CustomerService();
-		
-		System.out.println("************** Get All Accounts *****************");
-		System.out.println(process.getAllAccounts());
-		System.out.println("\n************** Get All Customers *****************");
-		System.out.println(cutomerProcess.getAllCustomers());
-		Account userTest1 = process.getBalanceOf(acc1.getAccountID());
-		System.out.println(
-				"\n@ Account details of account number:" + acc1.getAccountID() + " is :" + "\n## " + userTest1);
-		userTest1 = process.getBalanceOf(acc4.getAccountID());
-		System.out.println(
-				"\n@ Account details of account number:" + acc4.getAccountID() + " is as follows" + "\n##" + userTest1);
-		System.out.println("\n########## Account Balance for given account number ##########");
-		Account userTest2 = process.getBalanceOf(3);
-		System.out.println(
-				"@ Account details of account number:3 .." + "## " + userTest2 + " sorry user doesn't exist\n");
-		System.out.println("############ All Customer Details ############");
-		System.out.println(cutomerProcess.getAllCustomers());
-		System.out.println("\n ############ Transfer of Funds from account number 4 to 5 ############");
-		String transferStatus = process.transferFunds(4, 5, 100);
-		System.out.println("@ Fund Transfer from account 4 to account 5 is: " + transferStatus);
-		return null;
+		List<Account> accountList = accountService.addAllAccount(accounts);
+		return accountList;
 
 	}
 }
