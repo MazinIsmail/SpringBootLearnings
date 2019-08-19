@@ -11,13 +11,14 @@ import com.wipro.bank.repository.AccountRepository;
 
 @Service
 public class AccountService {
+
 	@Autowired
 	AccountRepository accountRepository;
-	
+
 	public String addAccount(Account ac) {
 		return "";
 	}
-	
+
 	public List<Account> addAllAccount(List<Account> accountList) {
 		List<Account> accountSuccess = accountRepository.saveAll(accountList);
 		return accountSuccess;
@@ -43,4 +44,5 @@ public class AccountService {
 		return null;
 
 	}
+
 }
