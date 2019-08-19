@@ -6,14 +6,20 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import com.wipro.bank.entity.Account;
 import com.wipro.bank.entity.Customer;
 import com.wipro.bank.service.AccountService;
 
 @SpringBootApplication
+@ComponentScan("com.wipro.bank*")
+@EntityScan("com.wipro.bank.entity*")
+@EnableJpaRepositories("com.wipro.bank.repository*")
 public class SpringLearningsApplication {
-	
+
 	@Autowired
 	private static AccountService accountService;
 
@@ -50,6 +56,10 @@ public class SpringLearningsApplication {
 		System.out.println("\n ############ Transfer of Funds from account number 4 to 5 ############");
 		String transferStatus = process.transferFunds(4, 5, 100);
 		System.out.println("@ Fund Transfer from account 4 to account 5 is: " + transferStatus);
+	}
+
+	public static void setAccountService(AccountService accountService) {
+		SpringLearningsApplication.accountService = accountService;
 	}
 
 }

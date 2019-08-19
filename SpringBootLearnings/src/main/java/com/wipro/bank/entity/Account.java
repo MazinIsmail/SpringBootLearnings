@@ -2,19 +2,22 @@ package com.wipro.bank.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Account {
-	
+
 	@Id
 	private int accountID;
+	@ManyToOne
 	private Customer customer;
 	private double balance;
-	public Account () {
-		
+
+	public Account() {
+
 	}
-	
-	public Account(int accountID, Customer customer,double balance) {
+
+	public Account(int accountID, Customer customer, double balance) {
 		this.accountID = accountID;
 		this.balance = balance;
 		this.customer = new Customer(customer.getCustomerID(), customer.getName());
@@ -48,6 +51,5 @@ public class Account {
 	public String toString() {
 		return "Account [accountID=" + accountID + ", customer=" + customer.toString() + ", balance=" + balance + "]";
 	}
-	
-	
+
 }
