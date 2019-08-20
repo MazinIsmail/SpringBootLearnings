@@ -8,7 +8,7 @@ import javax.persistence.OneToOne;
 public class Customer {
 
 	@Id
-	private int customerID;
+	private int customerId;
 	
 	@OneToOne(mappedBy="customer")
 	private Account account;
@@ -20,16 +20,16 @@ public class Customer {
 	}
 
 	public Customer(int id, String name) {
-		this.customerID = id;
+		this.customerId = id;
 		this.name = name;
 	}
 
-	public int getCustomerID() {
-		return customerID;
+	public int getCustomerId() {
+		return customerId;
 	}
 
-	public void setCustomerID(int customerID) {
-		this.customerID = customerID;
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
 	}
 
 	public String getName() {
@@ -42,7 +42,7 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customer [customerID=" + customerID + ", name=" + name + "]";
+		return "Customer [customerID=" + customerId + ", name=" + name + "]";
 	}
 
 }

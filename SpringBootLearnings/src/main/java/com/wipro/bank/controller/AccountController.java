@@ -56,7 +56,7 @@ public class AccountController {
 	
 	@RequestMapping(value = "/addAccount", method = RequestMethod.POST)
 	public Account addAccount(@RequestBody Account newAccount) {
-		return accountService.addAccount(newAccount);
+		return accountService.addOrUpdateAccount(newAccount);
 	}
 	
 	@GetMapping("/getAccountBalance/{acNumber}")

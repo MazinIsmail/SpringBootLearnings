@@ -14,9 +14,10 @@ public class AccountService {
 	@Autowired
 	AccountRepository accountRepository;
 
-	public Account addAccount(Account ac) {
-		return accountRepository.save(ac);
+	public Account addOrUpdateAccount(Account account) {
+		return accountRepository.save(account);
 	}
+
 
 	public List<Account> addAllAccount(List<Account> accountList) {
 		List<Account> accountSuccess = accountRepository.saveAll(accountList);
@@ -29,16 +30,18 @@ public class AccountService {
 	}
 
 	public String transferFunds(int accountFromId, int accountToId, double transferAmount) {
-		Account accountFrom = accountRepository.findByAccountID(accountFromId);
+		Account accountFrom = accountRepository.findByAccountId(accountFromId);
 		if(accountFrom != null) {
 			if(transferAmount > accountFrom.getBalance()) {
 				return "INSUFFICIENT FUNDS";
 			} else {
-				Account accountTo = accountRepository.findByAccountID(accountToId);
+				Account accountTo = accountRepository.findByAccountId(accountToId);
 				if(accountTo != null) {
 					accountTo.setBalance(accountTo.getBalance() + transferAmount);
 					accountFrom.setBalance(accountFrom.getBalance() - transferAmount);
-					return "SUCCESS”";
+					addOrUpdateAccount(accountFrom);
+					addOrUpdateAccount(accountTo);
+					return "SUCCESS";
 				} else 
 					return "ID MISATCH";
 			}
@@ -47,7 +50,7 @@ public class AccountService {
 	}
 
 	public Account getBalanceOf(int accountNumber) {
-		return accountRepository.findByAccountID(accountNumber);
+		return accountRepository.findByAccountId(accountNumber);
 	}
 
 }
