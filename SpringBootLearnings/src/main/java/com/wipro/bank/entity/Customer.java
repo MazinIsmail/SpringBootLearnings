@@ -2,16 +2,12 @@ package com.wipro.bank.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Customer {
 
 	@Id
 	private int customerId;
-	
-	@OneToOne(mappedBy="customer")
-	private Account account;
 	
 	private String name;
 
