@@ -12,7 +12,7 @@ import com.wipro.bank.repository.AccountRepository;
 public class AccountService {
 
 	@Autowired
-	AccountRepository accountRepository;
+	private AccountRepository accountRepository;
 
 	public Account addOrUpdateAccount(Account account) {
 		return accountRepository.save(account);
