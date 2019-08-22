@@ -1,27 +1,22 @@
 package com.wipro.bank.service;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.when;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.assertj.core.util.Arrays;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
-import org.mockito.internal.verification.VerificationModeFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.wipro.bank.entity.Account;
+import com.wipro.bank.entity.Customer;
 import com.wipro.bank.repository.AccountRepository;
+import com.wipro.bank.test.helper.TestHelper;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = { AccountService.class })
@@ -33,79 +28,29 @@ public class AccountServiceTest {
 	@MockBean
 	private AccountRepository mockAccountRepository;
 
-	/*
-	 * @Test public void testRecordsWhenEmpty() { Iterable<Account> products =
-	 * accountService.getAllAccounts(); assertThat(products).isEmpty(); }
-	 */
-
-	/*
-	 * @Test public void addAllAccountTest() { List<Account> accountList = new
-	 * ArrayList<>();
-	 * Mockito.when(mockAccountRepository.saveAll(Mockito.any(List<Account>))).
-	 * thenReturn(serviceResponse);
-	 * 
-	 * 
-	 * List<Account> accountSuccess = accountService.addAllAccount(accountList);
-	 * 
-	 * 
-	 * 
-	 * Mockito.verify(mockPcCalcRestHandler,
-	 * VerificationModeFactory.times(1)).invokePcCalcRestService(serviceRequest);
-	 * Mockito.reset(mockPcCalcRestHandler);
-	 * 
-	 * }
-	 */
-
-	/*
-	 * @Test public void addAllAccountTest() {
-	 * 
-	 * 
-	 * Account acc = new Account(); List<Account> accountList = new ArrayList<>();
-	 * // Mockito.when(mockAccountRepository.saveAll(Mockito.any(List<Account>))).
-	 * // thenReturn(serviceResponse);
-	 * Mockito.when(mockAccountRepository.saveAllAccount(accountList)).thenReturn(
-	 * acc); // List<String> mockList = mock(List.class); //
-	 * when(accountList.size()).thenReturn(5); assertTrue(accountList.size() == 5);
-	 * 
-	 * 
-	 * List<Account> accountList = new ArrayList<>();
-	 * Mockito.when(mockAccountRepository.saveAllAccount(accountList)).thenReturn(
-	 * serviceResponse);
-	 * 
-	 * }
-	 */
-	
+	@Test
 	public void addAllAccountsTest() {
-		      
-		List<Account> accountList = new ArrayList<>();
-        Account accountAll = new Account();
-        accountAll.setAccountId(1);
-        accountAll.setBalance(500.0);
-        accountList.add(accountAll);
-        when(mockAccountRepository.saveAll(accountList)).thenReturn(accountList);
+		List<Account> accountList = TestHelper.getAccountListData();
+		Mockito.when(mockAccountRepository.saveAll(accountList)).thenReturn(accountList);
+		List<Account> accountSuccess1 = accountService.addAllAccount(accountList);
+		assertEquals(1, accountSuccess1.size());
 	}
-        		
-        		/*
-		 * Copyright 2019 the original author or authors.+
-		 *
-		 * Licensed under the Apache License, Version 2.0 (the "License");
-		 * you may not use this file except in compliance with the License.
-		 * You may obtain a copy of the License at
-		 *
-		 *      http://www.apache.org/licenses/LICENSE-2.0
-		 *
-		 * Unless required by applicable law or agreed to in writing, software
-		 * distributed under the License is distributed on an "AS IS" BASIS,
-		 * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-		 * See the License for the specific language governing permissions and
-		 * limitations under the License.
-		 */
 
+	@Test
+	public void addOrUpdateAccountTest() {
+		Account account = TestHelper.getAccountData1();
+		Mockito.when(mockAccountRepository.save(account)).thenReturn(account);
+		Account accountResult = accountService.addOrUpdateAccount(account);
+		assertEquals(account.getAccountId(), accountResult.getAccountId());
+	}
 
-	/*
-	 * private List<Account> asList(Account accountAllList) { // TODO Auto-generated
-	 * method stub return null; }
-	 */
+	@Test
+	public void getAllAccountsTest() {
+		List<Account> accountList = TestHelper.getAccountListData();
+		Mockito.when(mockAccountRepository.findAll()).thenReturn(accountList);
+		List<Account> accountSuccess1 = accountService.getAllAccounts();
+		assertEquals(1, accountSuccess1.size());
+	}
 
 	@Test
 	public void getBalanceOfTest() {
@@ -120,9 +65,10 @@ public class AccountServiceTest {
 	public void transferFundsTest() {
 		int accountFromId = 1;
 		int accountToId = 2;
-		double transferAmount = 5000;
-		Account accountFrom = new Account();
-		Account accountTo = new Account();
+		double transferAmount = 500;
+		Customer customerObj = TestHelper.getCustomerData1();
+		Account accountFrom = TestHelper.getAccountData1();
+		Account accountTo = TestHelper.getAccountData2();
 		// Account transAmount = new Account();
 		Mockito.when(mockAccountRepository.findByAccountId(accountFromId)).thenReturn(accountFrom);
 		Mockito.when(mockAccountRepository.findByAccountId(accountToId)).thenReturn(accountTo);
@@ -142,7 +88,9 @@ public class AccountServiceTest {
 		 */
 		/**
 		 * Verify in Mockito simply means that you want to check if a certain method of
-		 * a mock object has been called by specific number of times
+		 * a mock object has been called by specific number of times and also to verify
+		 * mock methods has been invoked and executed while executing the actual test
+		 * classes.
 		 */
 		// Mockito.verify(mockAccountRepository,
 		// times(1)).findByAccountId(accountFromId);
@@ -150,7 +98,7 @@ public class AccountServiceTest {
 		// Mockito condition also twice
 		Mockito.verify(mockAccountRepository, times(2)).findByAccountId(accountFromId);
 
-		assertEquals(accountSuccess, "INSUFFICIENT FUNDS");
+		assertEquals(accountSuccess, "SUCCESS");
 		assertEquals(accountSuccess1, "INSUFFICIENT FUNDS");
 	}
 
