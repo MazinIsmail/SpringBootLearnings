@@ -14,17 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wipro.bank.entity.Account;
 import com.wipro.bank.entity.Customer;
 import com.wipro.bank.model.FundTransfer;
-import com.wipro.bank.service.AccountService;
-import com.wipro.bank.service.CustomerService;
+import com.wipro.bank.service.AccountServiceImpl;
+import com.wipro.bank.service.CustomerServiceImpl;
 
 @RestController
 public class AccountController {
 
 	@Autowired
-	private AccountService accountService;
+	private AccountServiceImpl accountService;
 	
 	@Autowired
-	private CustomerService customerService;
+	private CustomerServiceImpl customerService;
 
 	@GetMapping("/fetchAllAccounts")
 	public List<Account> fetchAllAccounts() {

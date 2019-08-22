@@ -9,7 +9,7 @@ import com.wipro.bank.entity.Account;
 import com.wipro.bank.repository.AccountRepository;
 
 @Service
-public class AccountService {
+public class AccountServiceImpl {
 
 	@Autowired
 	private AccountRepository accountRepository;

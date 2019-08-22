@@ -19,11 +19,11 @@ import com.wipro.bank.repository.AccountRepository;
 import com.wipro.bank.test.helper.TestHelper;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = { AccountService.class })
+@ContextConfiguration(classes = { AccountServiceImpl.class })
 public class AccountServiceTest {
 
 	@Autowired
-	private AccountService accountService;
+	private AccountServiceImpl accountService;
 
 	@MockBean
 	private AccountRepository mockAccountRepository;

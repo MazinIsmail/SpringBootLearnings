@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.wipro.bank.entity.Account;
 import com.wipro.bank.entity.Customer;
+import com.wipro.bank.model.FundTransfer;
 
 public class TestHelper {
 
@@ -33,6 +34,11 @@ public class TestHelper {
 		return accountList;
 	}
 
+	public static int getBalance(int bal) {
+		int balance = 1500;
+		return balance;
+	}
+	
 	public static Customer getCustomerData1() {
 		Customer customerObj = new Customer(1, "Customer1");
 		return customerObj;
@@ -52,6 +58,9 @@ public class TestHelper {
 		return customerList;
 	}
 
-	
+	public static FundTransfer fundTransferData() {
+		FundTransfer fundTransferData = new FundTransfer(10,20,2000);
+		return fundTransferData;
+	}
 
 }

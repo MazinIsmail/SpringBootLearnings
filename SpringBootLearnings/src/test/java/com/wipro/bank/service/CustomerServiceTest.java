@@ -17,11 +17,11 @@ import com.wipro.bank.repository.CustomerRepository;
 import com.wipro.bank.test.helper.TestHelper;
 
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = { CustomerService.class })
+@ContextConfiguration(classes = { CustomerServiceImpl.class })
 public class CustomerServiceTest {
 
 	@Autowired
-	private CustomerService customerService;
+	private CustomerServiceImpl customerService;
 
 	@MockBean
 	private CustomerRepository mockCustomerRepository;
