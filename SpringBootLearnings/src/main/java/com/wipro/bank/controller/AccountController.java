@@ -14,17 +14,17 @@ import org.springframework.web.bind.annotation.RestController;
 import com.wipro.bank.entity.Account;
 import com.wipro.bank.entity.Customer;
 import com.wipro.bank.model.FundTransfer;
-import com.wipro.bank.service.AccountServiceImpl;
-import com.wipro.bank.service.CustomerServiceImpl;
+import com.wipro.bank.service.AccountService;
+import com.wipro.bank.service.CustomerService;
 
 @RestController
 public class AccountController {
 
 	@Autowired
-	private AccountServiceImpl accountService;
-	
+	private AccountService accountService;
+
 	@Autowired
-	private CustomerServiceImpl customerService;
+	private CustomerService customerService;
 
 	@GetMapping("/fetchAllAccounts")
 	public List<Account> fetchAllAccounts() {
@@ -37,7 +37,7 @@ public class AccountController {
 		return customerService.getAllCustomers();
 
 	}
-	
+
 	@GetMapping("/intializeAccounts")
 	public List<Account> intializeAccounts() {
 		List<Account> accounts = new ArrayList<Account>();
@@ -53,19 +53,20 @@ public class AccountController {
 		return accountList;
 
 	}
-	
+
 	@RequestMapping(value = "/addAccount", method = RequestMethod.POST)
 	public Account addAccount(@RequestBody Account newAccount) {
 		return accountService.addOrUpdateAccount(newAccount);
 	}
-	
+
 	@GetMapping("/getAccountBalance/{acNumber}")
 	public Account getAccountBalance(@PathVariable int acNumber) {
 		return accountService.getBalanceOf(acNumber);
 	}
-	
+
 	@RequestMapping(value = "/transferFunds", method = RequestMethod.POST)
 	public String transferFunds(@RequestBody FundTransfer fundTransfer) {
-		return accountService.transferFunds(fundTransfer.getFromAccount(), fundTransfer.getToAccount(), fundTransfer.getAmount());
+		return accountService.transferFunds(fundTransfer.getFromAccount(), fundTransfer.getToAccount(),
+				fundTransfer.getAmount());
 	}
 }

@@ -4,7 +4,6 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Before;
@@ -14,7 +13,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -22,8 +20,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wipro.bank.entity.Account;
 import com.wipro.bank.entity.Customer;
 import com.wipro.bank.model.FundTransfer;
-import com.wipro.bank.service.AccountServiceImpl;
-import com.wipro.bank.service.CustomerServiceImpl;
+import com.wipro.bank.service.AccountService;
+import com.wipro.bank.service.CustomerService;
 import com.wipro.bank.test.helper.TestHelper;
 
 public class AccountControllerTest {
@@ -33,16 +31,16 @@ public class AccountControllerTest {
 	private static final String ADD_ACCOUNT = "/addAccount";
 	private static final String INITIALIZE_ACCOUNT = "/intializeAccounts";
 	private static final String TRANSFER_FUNDS = "/transferFunds";
-    private static final String FETCH_ACCOUNT_BALANCE = "/getAccountBalance/{acNumber}";
+	private static final String FETCH_ACCOUNT_BALANCE = "/getAccountBalance/{acNumber}";
 
 	@InjectMocks
 	private AccountController accountController;
 
 	@Mock
-	private AccountServiceImpl accountService;
+	private AccountService accountService;
 
 	@Mock
-	private CustomerServiceImpl customerService;
+	private CustomerService customerService;
 
 	private MockMvc mockMvc;
 
@@ -125,8 +123,8 @@ public class AccountControllerTest {
 		Account account = TestHelper.getAccountData1();
 		Mockito.when(accountService.getBalanceOf(accountNumber)).thenReturn(account);
 		String json = new ObjectMapper().writeValueAsString(accountNumber);
-		mockMvc.perform(get(FETCH_ACCOUNT_BALANCE, accountNumber).content(json)
-				.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+		mockMvc.perform(get(FETCH_ACCOUNT_BALANCE, accountNumber).content(json).contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk());
 		Mockito.reset(accountService);
 	}
 

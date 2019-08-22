@@ -9,7 +9,7 @@ import com.wipro.bank.entity.Customer;
 import com.wipro.bank.repository.CustomerRepository;
 
 @Service
-public class CustomerServiceImpl {
+public class CustomerServiceImpl implements CustomerService {
 	
 	@Autowired
 	CustomerRepository customerRepository;

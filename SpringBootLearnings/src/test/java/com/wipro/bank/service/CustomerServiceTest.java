@@ -21,7 +21,7 @@ import com.wipro.bank.test.helper.TestHelper;
 public class CustomerServiceTest {
 
 	@Autowired
-	private CustomerServiceImpl customerService;
+	private CustomerService customerService;
 
 	@MockBean
 	private CustomerRepository mockCustomerRepository;

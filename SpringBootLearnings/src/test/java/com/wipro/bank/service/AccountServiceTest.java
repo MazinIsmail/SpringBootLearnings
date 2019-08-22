@@ -23,7 +23,7 @@ import com.wipro.bank.test.helper.TestHelper;
 public class AccountServiceTest {
 
 	@Autowired
-	private AccountServiceImpl accountService;
+	private AccountService accountService;
 
 	@MockBean
 	private AccountRepository mockAccountRepository;
