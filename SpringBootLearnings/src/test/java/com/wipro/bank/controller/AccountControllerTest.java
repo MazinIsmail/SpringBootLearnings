@@ -8,11 +8,13 @@ import java.util.List;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
@@ -24,6 +26,7 @@ import com.wipro.bank.service.AccountService;
 import com.wipro.bank.service.CustomerService;
 import com.wipro.bank.test.helper.TestHelper;
 
+@RunWith(SpringRunner.class)
 public class AccountControllerTest {
 
 	private static final String FETCH_ALL_ACCOUNTS = "/fetchAllAccounts";
