@@ -9,7 +9,7 @@
 		<version>2.1.4.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>b7.JO854817.foundation.bank</groupId>
+	<groupId>SpringBootLearnings</groupId>
 	<artifactId>JO854817_bank</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SpringBootLearnings</name>
