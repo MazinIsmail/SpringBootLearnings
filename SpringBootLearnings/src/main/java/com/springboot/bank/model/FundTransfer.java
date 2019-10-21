@@ -1,4 +1,4 @@
-package com.wipro.bank.model;
+package com.springboot.bank.model;
 
 public class FundTransfer {
 

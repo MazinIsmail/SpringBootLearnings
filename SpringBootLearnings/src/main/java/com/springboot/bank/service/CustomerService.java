@@ -1,8 +1,8 @@
-package com.wipro.bank.service;
+package com.springboot.bank.service;
 
 import java.util.List;
 
-import com.wipro.bank.entity.Customer;
+import com.springboot.bank.entity.Customer;
 
 public interface CustomerService {
 

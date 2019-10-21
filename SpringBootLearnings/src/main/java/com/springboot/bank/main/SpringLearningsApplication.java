@@ -1,4 +1,4 @@
-package com.wipro.bank.main;
+package com.springboot.bank.main;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

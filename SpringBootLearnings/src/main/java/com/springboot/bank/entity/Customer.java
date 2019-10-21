@@ -1,4 +1,4 @@
-package com.wipro.bank.entity;
+package com.springboot.bank.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

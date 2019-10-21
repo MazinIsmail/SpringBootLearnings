@@ -12,8 +12,10 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.wipro.bank.entity.Customer;
-import com.wipro.bank.repository.CustomerRepository;
+import com.springboot.bank.entity.Customer;
+import com.springboot.bank.repository.CustomerRepository;
+import com.springboot.bank.service.CustomerService;
+import com.springboot.bank.service.CustomerServiceImpl;
 import com.wipro.bank.test.helper.TestHelper;
 
 @RunWith(SpringRunner.class)

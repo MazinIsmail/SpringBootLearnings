@@ -1,4 +1,4 @@
-package com.wipro.bank.controller;
+package com.springboot.bank.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.wipro.bank.entity.Account;
-import com.wipro.bank.entity.Customer;
-import com.wipro.bank.model.FundTransfer;
-import com.wipro.bank.service.AccountService;
-import com.wipro.bank.service.CustomerService;
+import com.springboot.bank.entity.Account;
+import com.springboot.bank.entity.Customer;
+import com.springboot.bank.model.FundTransfer;
+import com.springboot.bank.service.AccountService;
+import com.springboot.bank.service.CustomerService;
 
 @RestController
 public class AccountController {

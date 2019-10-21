@@ -14,19 +14,24 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.wipro.bank.entity.Account;
-import com.wipro.bank.entity.Customer;
-import com.wipro.bank.model.FundTransfer;
-import com.wipro.bank.service.AccountService;
-import com.wipro.bank.service.CustomerService;
+import com.springboot.bank.controller.AccountController;
+import com.springboot.bank.entity.Account;
+import com.springboot.bank.entity.Customer;
+import com.springboot.bank.model.FundTransfer;
+import com.springboot.bank.service.AccountService;
+import com.springboot.bank.service.AccountServiceImpl;
+import com.springboot.bank.service.CustomerService;
+import com.springboot.bank.service.CustomerServiceImpl;
 import com.wipro.bank.test.helper.TestHelper;
 
 @RunWith(SpringRunner.class)
+//@ContextConfiguration(classes = { AccountController.class, AccountServiceImpl.class, CustomerServiceImpl.class })
 public class AccountControllerTest {
 
 	private static final String FETCH_ALL_ACCOUNTS = "/fetchAllAccounts";

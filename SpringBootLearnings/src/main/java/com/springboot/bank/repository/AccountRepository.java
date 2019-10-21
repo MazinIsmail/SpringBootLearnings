@@ -1,11 +1,11 @@
-package com.wipro.bank.repository;
+package com.springboot.bank.repository;
 
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.wipro.bank.entity.Account;
+import com.springboot.bank.entity.Account;
 
 @Repository
 @Transactional

@@ -1,8 +1,8 @@
-package com.wipro.bank.service;
+package com.springboot.bank.service;
 
 import java.util.List;
 
-import com.wipro.bank.entity.Account;
+import com.springboot.bank.entity.Account;
 
 public interface AccountService {
 

@@ -3,9 +3,9 @@ package com.wipro.bank.test.helper;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.wipro.bank.entity.Account;
-import com.wipro.bank.entity.Customer;
-import com.wipro.bank.model.FundTransfer;
+import com.springboot.bank.entity.Account;
+import com.springboot.bank.entity.Customer;
+import com.springboot.bank.model.FundTransfer;
 
 public class TestHelper {
 
