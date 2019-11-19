@@ -15,9 +15,9 @@ public class AccountServiceImpl implements AccountService {
 	private AccountRepository accountRepository;
 
 	public Account addOrUpdateAccount(Account account) {
+		System.out.println("Inside addOrUpdateAccount(Account account)");
 		return accountRepository.save(account);
 	}
-
 
 	public List<Account> addAllAccount(List<Account> accountList) {
 		List<Account> accountSuccess = accountRepository.saveAll(accountList);
@@ -31,18 +31,18 @@ public class AccountServiceImpl implements AccountService {
 
 	public String transferFunds(int accountFromId, int accountToId, double transferAmount) {
 		Account accountFrom = accountRepository.findByAccountId(accountFromId);
-		if(accountFrom != null) {
-			if(transferAmount > accountFrom.getBalance()) {
+		if (accountFrom != null) {
+			if (transferAmount > accountFrom.getBalance()) {
 				return "INSUFFICIENT FUNDS";
 			} else {
 				Account accountTo = accountRepository.findByAccountId(accountToId);
-				if(accountTo != null) {
+				if (accountTo != null) {
 					accountTo.setBalance(accountTo.getBalance() + transferAmount);
 					accountFrom.setBalance(accountFrom.getBalance() - transferAmount);
 					addOrUpdateAccount(accountFrom);
 					addOrUpdateAccount(accountTo);
 					return "SUCCESS";
-				} else 
+				} else
 					return "ID MISATCH";
 			}
 		} else

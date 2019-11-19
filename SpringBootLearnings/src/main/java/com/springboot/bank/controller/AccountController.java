@@ -28,6 +28,7 @@ public class AccountController {
 
 	@GetMapping("/fetchAllAccounts")
 	public List<Account> fetchAllAccounts() {
+		System.out.println("Insdie controller fetchAllAccounts");
 		return accountService.getAllAccounts();
 
 	}
