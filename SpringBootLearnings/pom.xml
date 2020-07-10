@@ -9,8 +9,8 @@
 		<version>2.1.4.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>SpringBootLearnings</groupId>
-	<artifactId>JO854817_bank</artifactId>
+	<groupId>com.springboot</groupId>
+	<artifactId>SpringBootLearnings</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>SpringBootLearnings</name>
 	<description>Demo project for Spring Boot</description>
